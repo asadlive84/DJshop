@@ -9,7 +9,7 @@ from product.views import product_list, \
 app_name = 'product'
 
 urlpatterns = [
-    path('', product_list, name="home"),
+    path('grid/', product_list, name="home"),
     path('table/', product_list_table, name="home_table"),
     path('create/', create_product, name='create_product'),
     path('<str:slug>-<int:pk>/', product_details, name="product_details"),
