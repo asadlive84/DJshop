@@ -1,0 +1,47 @@
+{% load staticfiles %}
+{% load custom_time %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{% url 'product:home' %}">Logo</a>
+                <a href="{% url 'product:create_product' %}">create</a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% for message in messages %}
+                 <div class="alert alert-{{ message.tags }} alert-dismissible" >
+                 <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{ message }}</strong>
+                 </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+            {% block content %}{% endblock %}
+
+    </div>
+    <p>XX{{ copyright_year }}</p>
+    {% include 'footer.html' %}
+</body>
+</html>

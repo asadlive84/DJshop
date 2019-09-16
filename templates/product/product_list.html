@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Product List Page
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'product:home_table'%}">Table View</a>
+<div class="row">
+
+{% for product in product_list %}
+
+    <div class="col-md-3">
+        <div class="">
+           {% if product.image %}
+            <img class="" src="{{ product.image.url }}" alt="Card image" style="width:100%">
+                <a href="{% url 'product:product_edit_view' product.slug product.id%}">Edit</a>
+
+           {% endif %}
+            <div class="">
+                <h4 class="card-title"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h4>
+                <p class="card-text">Quantity: {{ product.quantity }} {{ product.measure }}</p>
+
+                <p class="card-text">Sales Price: {{ product.sales_price }}</p>
+
+
+
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

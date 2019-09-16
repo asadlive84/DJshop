@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}{{ product.name }} {{ product.quantity }} {{ product.measure }} | Product Details{% endblock %}
+
+{% block content %}
+<a href="{% url 'product:home_table'%}">Table View</a>
+<h1>Name: {{ product.name }}</h1>
+<ul>
+    <li><img style="width: 400px" src="{{ product.image.url }}" alt=""></li>
+    <li>created by {{ product.user.username }}</li>
+    <a href="{% url 'product:product_edit_view' product.slug product.id%}">Edit</a>
+    <li>Create Date: {{ product.created_at }}</li>
+    {% if product.updated_at  %}
+    <li>Last updated: {{ product.updated_at }}</li>
+    {% endif %}
+    <li>Purchase Price: ${{ product.purchase_price }}</li>
+    <li>Quantity: {{ product.quantity }} {{ product.measure }}</li>
+    <li>Sales Price: ${{ product.sales_price }}</li>
+</ul>
+
+
+{% endblock %}
