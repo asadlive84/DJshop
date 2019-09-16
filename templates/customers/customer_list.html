@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+customers portal
+{% endblock %}
+
+
+
+{% block content %}
+<a href="{% url 'customers:customer_create' %}">Create Customer</a>
+<h2>Customer Portal</h2>
+<div class="row">
+
+
+{% for customer in customers %}
+<div class="col-md-3">
+<p>Name: {{ customer.name }}</p>
+<p>Mobile Number: {{ customer.mobile_number }}</p>
+</div>
+{% endfor %}
+
+</div>
+{% endblock %}
